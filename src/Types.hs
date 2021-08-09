@@ -4,15 +4,10 @@ module Types where
 import RIO
 import RIO.Process
 
--- | Command line arguments
-data Options = Options
-  { optionsVerbose :: !Bool
-  }
-
 data App = App
   { appLogFunc :: !LogFunc
   , appProcessContext :: !ProcessContext
-  , appOptions :: !Options
+  , appInput :: !String
   -- Add other app-specific configuration information here
   }
 
