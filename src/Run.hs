@@ -4,6 +4,7 @@ module Run (run) where
 
 import Prelude (putStrLn)
 import Import
+import Util
 
 {-
    Importing Prelude is probably wrong ? I followed those examples:
@@ -14,4 +15,4 @@ run :: RIO App ()
 run = do
   state <- ask
   let input = appInput state
-  liftIO $ putStrLn $ "We're inside the application! Input is " ++ input
+  liftIO $ putStrLn $ "Here is the diamond:\n" ++ toDiamond input

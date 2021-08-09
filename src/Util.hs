@@ -3,9 +3,13 @@
 -- case.
 module Util
   ( plus2
+    , toDiamond
   ) where
 
 import RIO
 
 plus2 :: Int -> Int
 plus2 = (+ 2)
+
+toDiamond :: String -> String
+toDiamond input = "  A\n B B\nC   C\n B B\n  A"
