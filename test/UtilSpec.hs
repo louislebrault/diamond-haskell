@@ -15,5 +15,5 @@ spec = do
     prop "minus 2" $ \i -> plus2 i - 2 `shouldBe` i
 
   describe "toDiamond" $ do
-    it "draw a diamond, put input in the middle" $ toDiamond "C" `shouldBe`
+    it "draw a diamond, put input in the middle" $ toDiamond 'C' `shouldBe`
       "  A\n B B\nC   C\n B B\n  A"

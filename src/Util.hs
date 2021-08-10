@@ -7,9 +7,20 @@ module Util
   ) where
 
 import RIO
+import qualified RIO.Char as C
 
 plus2 :: Int -> Int
 plus2 = (+ 2)
 
-toDiamond :: String -> String
-toDiamond input = "  A\n B B\nC   C\n B B\n  A"
+{-
+  trouvé l'index de la lettre entrante dans l'alphabet
+  bouclé sur l'alphabet en ajoutant les lettres :
+  nombre d'espace dbt ligne = index de input dans l'alphabet - index de la lettre courante
+-}
+
+
+
+toDiamond :: Char -> String
+toDiamond input =
+  let index = C.ord input in
+  "  A\n B B\n" ++ [input] ++ "   " ++ [input] ++ "\n B B\n  A"
