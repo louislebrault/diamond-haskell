@@ -17,3 +17,12 @@ spec = do
   describe "toDiamond" $ do
     it "draw a diamond, put input in the middle" $ toDiamond 'C' `shouldBe`
       "  A\n B B\nC   C\n B B\n  A"
+
+  describe "toDiamond2" $ do
+    it "draw a diamond, put input in the middle" $ toDiamond2 'C' `shouldReturn`
+      "  A\n B B\nC   C\n B B\n  A"
+
+  describe "addSpaces" $ do
+    it "add spaces to a string"
+      $ addSpaces "Hello" 3 `shouldBe`
+      "Hello   "

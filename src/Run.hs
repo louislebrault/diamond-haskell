@@ -6,12 +6,6 @@ import Prelude (putStrLn, head)
 import Import
 import Util
 
-
-{-
-   Importing Prelude is probably wrong ? I followed those examples:
-   https://www.fpcomplete.com/haskell/library/rio/
--}
-
 run :: RIO App ()
 run = do
   state <- ask
