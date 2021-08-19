@@ -10,4 +10,4 @@ run :: RIO App ()
 run = do
   state <- ask
   let input = appInput state
-  liftIO $ putStrLn $ "Here is the diamond:\n" ++ toDiamond (head input)
+  liftIO $ putStrLn $ "Here is the diamond:\n" ++ toDiamond2 (head input)

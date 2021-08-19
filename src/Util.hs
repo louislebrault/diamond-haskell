@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 -- | Silly utility module, used to demonstrate how to write a test
 -- case.
@@ -29,13 +30,12 @@ addSpaces acc count = if (count <= 0)
 alphab :: [Char]
 alphab = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
-addLine :: String -> Int -> Int -> IO String
-addLine acc inputIndex count = do
-  liftIO $ print inputIndex
-  if count < inputIndex
-  then addLine (acc ++ "\n" ++ addSpaces acc count ++ [L.genericIndex alphab count]) inputIndex (count + 1)
-  else return acc
+addLine :: Int -> String -> Int -> String
+addLine count acc inputIndex
+  | trace (fromString $show count) False = ""
+  | count == 0 = addLine (count + 1) (addSpaces acc (inputIndex - count) ++ [L.genericIndex alphab count]) inputIndex
+  | count > 0 && count < inputIndex = addLine (count + 1) (acc ++ "\n" ++ addSpaces acc (inputIndex - count) ++ [L.genericIndex alphab count]) inputIndex
+  | otherwise = acc
 
-toDiamond2 :: Char -> IO String
-toDiamond2 input = do addLine "" ((fromMaybe 0 $ L.elemIndex input alphab) + 1) 0
-
+toDiamond2 :: Char -> String
+toDiamond2 input = addLine 0 "" ((fromMaybe 0 $ L.elemIndex input alphab) + 1)
