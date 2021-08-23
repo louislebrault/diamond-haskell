@@ -32,9 +32,9 @@ alphab = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 
 
 addLine :: Int -> String -> Int -> String
 addLine count acc inputIndex
-  | trace (fromString $show count) False = ""
+  | trace (fromString $ show count ++ " " ++ acc) False = ""
   | count == 0 = addLine (count + 1) (addSpaces acc (inputIndex - count) ++ [L.genericIndex alphab count]) inputIndex
-  | count > 0 && count < inputIndex = addLine (count + 1) (acc ++ "\n" ++ addSpaces acc (inputIndex - count) ++ [L.genericIndex alphab count]) inputIndex
+  | count > 0 && count < inputIndex = addLine (count + 1) (addSpaces (acc ++ "\n") (inputIndex - count) ++ [L.genericIndex alphab count]) inputIndex
   | otherwise = acc
 
 toDiamond2 :: Char -> String
